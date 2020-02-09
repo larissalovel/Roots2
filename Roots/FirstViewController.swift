@@ -74,9 +74,10 @@ class FirstViewController: UIViewController {
             self.emmisionsLabel.text = ""
             
             if self.transport_type != 1{
-                var distance = primaryRoute.distance / 1609.344
+                let distance = primaryRoute.distance / 1609.344
                 self.calculate_costs(fuel_economy: 25, mileage: distance)
-                self.emmisionsLabel.text = "Emissions: \(self.emissions) lbs of C02 \nCost of Gas: $\(self.gasCost)"
+                let time = Int(round(primaryRoute.expectedTravelTime / 60))
+                self.emmisionsLabel.text = "Emissions: \(self.emissions) lbs of C02 \nCost of Gas: $\(self.gasCost) \nExpected Time: \(time) min"
             }
             
             self.mapView.removeOverlays(self.mapView.overlays)
