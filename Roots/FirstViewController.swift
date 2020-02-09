@@ -72,12 +72,13 @@ class FirstViewController: UIViewController {
             guard let primaryRoute = response.routes.first else { return }
             
             self.emmisionsLabel.text = ""
+            self.emmisionsLabel.backgroundColor = .clear
             
             if self.transport_type != 1{
                 let distance = primaryRoute.distance / 1609.344
                 self.calculate_costs(fuel_economy: 25, mileage: distance)
                 let time = Int(round(primaryRoute.expectedTravelTime / 60))
-                self.emmisionsLabel.backgroundColor = .opaqueSeparator
+                self.emmisionsLabel.backgroundColor = .lightText
                 self.emmisionsLabel.layer.cornerRadius = self.emmisionsLabel.frame.size.height/4.5
                 self.emmisionsLabel.layer.masksToBounds = true
                 self.emmisionsLabel.text = "Emissions: \(self.emissions) lbs of C02 \nCost of Gas: $\(self.gasCost) \nExpected Time: \(time) min"
